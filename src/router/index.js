@@ -1,23 +1,48 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import MSitePage from '../pages/MSite/MSitePage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/msite',
+    name: 'msite',
+    component: MSitePage,
+    meta: {
+      showFooter:true
+    }
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/search',
+    name: 'search',
+    component: () => import(/* webpackChunkName: "search" */ '../pages/Search/SearchPage.vue'),
+    meta: {
+      showFooter:true
+    }
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: () => import(/* webpackChunkName: "order" */ '../pages/Order/OrderPage.vue'),
+    meta: {
+      showFooter:true
+    }
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "profile" */ '../pages/Profile/ProfilePage.vue'),
+    meta: {
+      showFooter:true
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ '../pages/Login/LoginPage.vue')
+  },
+  {path:'/',redirect:'/msite'}
 ]
 
 const router = new VueRouter({
